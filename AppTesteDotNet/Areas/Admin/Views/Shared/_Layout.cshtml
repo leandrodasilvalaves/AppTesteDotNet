@@ -1,14 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -22,16 +20,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Admin", "Index", "Dashboard", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("Categorias", "Index", "Categorias", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("SubCategorias", "Index", "Subcategorias", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("Dasboard", "Index", "Dashboard", new { area = "Admin" }, null)</li>
                 </ul>
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
