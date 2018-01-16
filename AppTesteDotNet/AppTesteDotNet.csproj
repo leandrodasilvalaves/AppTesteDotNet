@@ -187,6 +187,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Context\AppContext.cs" />
+    <Compile Include="Models\Interfaces\IAppContext.cs" />
+    <Compile Include="Models\EntityConfig\CampoConfiguration.cs" />
+    <Compile Include="Models\EntityConfig\CategoriaConfiguration.cs" />
+    <Compile Include="Models\EntityConfig\ListaConfiguration.cs" />
+    <Compile Include="Models\EntityConfig\SubCategoriaConfiguration.cs" />
+    <Compile Include="Models\Entitys\Campo.cs" />
+    <Compile Include="Models\Entitys\Categoria.cs" />
+    <Compile Include="Models\Entitys\Lista.cs" />
+    <Compile Include="Models\Entitys\SubCategoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,7 +257,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
