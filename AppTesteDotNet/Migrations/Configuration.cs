@@ -1,5 +1,6 @@
 ﻿namespace AppTesteDotNet.Migrations
 {
+    using AppTesteDotNet.Enum;
     using AppTesteDotNet.Models.Context;
     using AppTesteDotNet.Models.Entities;
     using System.Collections.Generic;
@@ -27,7 +28,7 @@
                             new Campo{
                                 Ordem =1,
                                 Descricao ="Campo1",
-                                Tipo ="checkbox",
+                                Tipo = (int)HtmlCampo.CHECKBOX,
                                 Lista = new List<Lista>
                                 {
                                     new Lista{Descricao="Opção1"},
@@ -39,7 +40,7 @@
                             {
                                 Ordem=2,
                                 Descricao="Campo2",
-                                Tipo="select",
+                                Tipo=(int)HtmlCampo.SELECT,
                                 Lista = new List<Lista>
                                 {
                                     new Lista{Descricao="Opção1"},
@@ -51,13 +52,13 @@
                             {
                                 Ordem=3,
                                 Descricao="Campo3",
-                                Tipo="Text"
+                                Tipo=(int)HtmlCampo.TEXT
                             },
                             new Campo
                             {
                                 Ordem=4,
                                 Descricao="Campo4",
-                                Tipo="Textarea"
+                                Tipo=(int)HtmlCampo.TEXTAREA
                             }
                         }
                     }
