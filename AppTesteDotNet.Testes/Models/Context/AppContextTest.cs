@@ -14,6 +14,7 @@ namespace AppTesteDotNet.Testes.Models.Context
         public AppContextTest()
         {
             Categorias = new TesteCategoriaDbSet();
+            SubCategorias = new TesteSubCategoriaDbSet();
         }
 
         public void Dispose() { }

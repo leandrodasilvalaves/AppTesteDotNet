@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<div ng-controller="subCategoriaController as vm" ng-init="vm.IniciarFormularioEdicao()">
+
+    <h2>Editar Subcategoria</h2>
+    <form name="frmEditar">
+
+        <div class="form-group">
+            <label>Categoria</label>
+            <select class="form-control"
+                    ng-model="vm.subCategoria.CategoriaId" ng-required="true">
+                <option value="" disabled>Selecione...</option>
+                <option value="{{ categoria.Id}}"
+                        ng-selected="categoria.Id === vm.subCategoria.CategoriaId"
+                        ng-repeat="categoria in vm.listaCategorias track by categoria.Id">
+                    {{ categoria.Descricao }}
+                </option>
+            </select>
+            <small class="form-text text-muted">Selecione uma categoria.</small>
+        </div>
+
+        <div class="form-group">
+            <label>Descrição</label>
+            <input type="text" class="form-control" placeholder="Descrição da subcategoria"
+                   ng-model="vm.subCategoria.Descricao" ng-required="true">
+            <small class="form-text text-muted">Informe uma categoria legal para a subcategoria.</small>
+        </div>
+        <div class="form-group">
+            <label>Slug</label>
+            <input type="text" class="form-control" placeholder="Slug da subcategoria"
+                   ng-model="vm.subCategoria.Slug" ng-required="true">
+            <small class="form-text text-muted">Separe as palavras por traços.</small>
+        </div>
+        <button class="btn btn-success"
+                ng-click="vm.editar(vm.subCategoria)"
+                ng-disabled="frmEditar.$invalid">
+            Salvar
+        </button>
+
+        <a href="@Url.Action("Index","Categorias", new { @area="Admin" },null)">Voltar para Categorias</a>
+    </form>
+
+</div>

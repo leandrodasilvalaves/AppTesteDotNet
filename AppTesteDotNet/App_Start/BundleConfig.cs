@@ -31,6 +31,7 @@ namespace AppTesteDotNet
                         "~/Scripts/angular.min.js",
                         "~/Scripts/angular-route.min.js",
 
+                        "~/App_Angular/common/*.js",
                         "~/App_Angular/app.js",
                         "~/App_Angular/services/*.js",
                         "~/App_Angular/controllers/*.js"

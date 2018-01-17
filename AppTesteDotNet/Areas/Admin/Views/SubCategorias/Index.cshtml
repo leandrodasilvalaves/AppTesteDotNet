@@ -3,5 +3,40 @@
     ViewBag.Title = "Index";
 }
 
-<h2>SubCategorias Admin</h2>
+<h2>Subcategorias Admin</h2>
+<div ng-controller="subCategoriaController as vm" ng-init="vm.listarTodos()">
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="@Url.Action("Incluir","SubCategorias", new { @area="Admin" },null)" class="btn btn-success">Incluir</a>
+        </div>
+        <div class="col-xs-6 text-right">
+            <input type="text" class="form-control" placeholder="Pesquisar da subcategoria" ng-model="pesquisar" />
+        </div>
+    </div>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Descrição</th>
+                <th>Slug</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="subcategoria in vm.listaSubCategorias | filter:pesquisar track by subcategoria.Id ">
+                <td ng-bind="subcategoria.Id"></td>
+                <td ng-bind="subcategoria.Descricao"></td>
+                <td ng-bind="subcategoria.Slug"></td>
+                <td>
+                    <a href="@Url.Action("Editar","SubCategorias", new { @area="Admin" },null)?id={{ subcategoria.Id}}" class="btn btn-primary btn-sm">Editar</a>
+                    <button class="btn btn-danger btn-sm" ng-click="vm.confirmarExclusao(subcategoria.Id)">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
 
+    </table>
+
+
+
+</div>

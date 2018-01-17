@@ -16,7 +16,7 @@
         }
 
         vm.pesquisarPorId = function () {
-            var response = categoriaServices.pesquisarPorId(_getIdFromUrl());
+            var response = categoriaServices.pesquisarPorId(getIdFromUrl());
             response.then(function (resp) {
                 vm.categoria =resp.data;
             }, function (err) {
@@ -26,12 +26,12 @@
 
         vm.incluir = function (categoria) {
             var response = categoriaServices.incluir(categoria);
-            _executarRepsonse(response);
+            _executarResponseNonQuery(response);
         }
 
         vm.editar = function (categoria) {
             var response = categoriaServices.editar(categoria);
-            _executarRepsonse(response);
+            _executarResponseNonQuery(response);
         }
 
         vm.confirmarExclusao = function (id) {
@@ -56,18 +56,13 @@
 
 
         //Metodos Privados
-        var _getIdFromUrl = function () {
-            var index = location.toString().indexOf('=');
-            var id = parseInt(location.toString().substring(index + 1));
-            return id;
-        };
 
         var _excluirCategoria = function(id){
             var response = categoriaServices.excluir(id);
-            _executarRepsonse(response);
+            _executarResponseNonQuery(response);
         };
 
-        var _executarRepsonse = function (response) {
+        var _executarResponseNonQuery = function (response) {
             response.then(function (resp) {
                 location = "/Admin/Categorias";
             }, function (err) {

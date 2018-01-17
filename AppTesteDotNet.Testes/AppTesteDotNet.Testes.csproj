@@ -97,10 +97,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\TestCategoriaController.cs" />
+    <Compile Include="Admin\TestSubCategoriaController.cs" />
     <Compile Include="Mock\CategoriaMock.cs" />
+    <Compile Include="Mock\SubCategoriaMock.cs" />
     <Compile Include="Models\Context\AppContextTest.cs" />
     <Compile Include="Models\Context\TestDbSet.cs" />
     <Compile Include="Models\Context\TesteCategoriaDbSet.cs" />
+    <Compile Include="Models\Context\TesteSubCategoriaDbSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
