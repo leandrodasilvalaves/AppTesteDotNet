@@ -1,7 +1,7 @@
 ﻿(function (app) {
 
     'use strict';
-    function subCategoriaController($scope, subCategoriaServices, categoriaServices) {
+    function subCategoriaController($scope, subCategoriaServices, categoriaServices, tipoDeCampoServices) {
 
         var vm = this;
         vm.listaSubCategorias = [];
@@ -21,6 +21,15 @@
             var response = categoriaServices.listarTodos();
             response.then(function (resp) {
                 vm.listaCategorias = resp.data;
+            }, function (err) {
+                console.log(err);
+            });
+        }
+
+        vm.listarTiposDeCampos = function () {
+            var response = tipoDeCampoServices.listarTodos();
+            response.then(function (resp) {
+                vm.listaTipoDeCampos = resp.data;
             }, function (err) {
                 console.log(err);
             });
@@ -65,10 +74,15 @@
 
         };
 
-
-        vm.IniciarFormularioEdicao = function () {
+        vm.IniciarFormularioInclusao = function () {
             vm.listarCategorias();
+            vm.listarTiposDeCampos();
+        }
+
+        vm.IniciarFormularioEdicao = function () {            
             vm.pesquisarPorId();
+            vm.listarCategorias();
+            vm.listarTiposDeCampos();
         }
 
         //Metodos Privados
@@ -87,6 +101,7 @@
         };
     }
 
-    app.controller('subCategoriaController', ['$scope', 'subCategoriaServices','categoriaServices', subCategoriaController]);
+    app.controller('subCategoriaController',
+        ['$scope', 'subCategoriaServices', 'categoriaServices', 'tipoDeCampoServices', subCategoriaController]);
 
 })(angular.module('appAdmin'));
