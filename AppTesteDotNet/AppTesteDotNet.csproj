@@ -155,8 +155,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CategoriasController.cs" />
-    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Api\CategoriasController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Mvc\CategoriasController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Mvc\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Mvc\SubCategoriasController.cs" />
+    <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Enum\HtmlCampo.cs" />
@@ -182,6 +185,9 @@
     <Compile Include="TipoDeCampos\TextCampo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Angular\app.js" />
+    <Content Include="App_Angular\controllers\categoria.controller.js" />
+    <Content Include="App_Angular\services\categoria.service.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -200,12 +206,17 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categorias\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SubCategorias\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categorias\Incluir.cshtml" />
+    <Content Include="Areas\Admin\Views\Categorias\Editar.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -223,7 +234,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Categoria\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,23 +1,21 @@
-﻿using AppTesteDotNet.Models.Context;
-using AppTesteDotNet.Models.Entities;
-using AppTesteDotNet.Models.Intefaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using AppTesteDotNet.Models.Context;
+using AppTesteDotNet.Models.Entities;
 
-namespace AppTesteDotNet.Areas.Admin.Controllers
+namespace AppTesteDotNet.Controllers
 {
-    public class CategoriasController : ApiController
+    public class CategoriaController : ApiController
     {
-        private IAppContext db;
-
-        public CategoriasController(IAppContext context =null)
-        {
-            db = context ?? new AppContext();
-        }
+        private AppContext db = new AppContext();
 
         // GET: api/Categorias
         public IQueryable<Categoria> GetCategorias()

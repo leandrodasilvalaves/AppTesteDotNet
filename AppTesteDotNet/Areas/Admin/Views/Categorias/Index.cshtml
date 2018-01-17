@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categorias Admin</h2>
+<div ng-controller="categoriaController as vm" ng-init="vm.listarTodos()">    
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="@Url.Action("Incluir","Categorias", new { @area="Admin" },null)" class="btn btn-success">Incluir</a>
+        </div>
+        <div class="col-xs-6 text-right">
+            <input type="text" class="form-control" placeholder="Pesquisar da categoria" ng-model="pesquisar" />
+        </div>
+    </div>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Descrição</th>
+                <th>Slug</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="categoria in vm.listaCategorias | filter:pesquisar track by categoria.Id ">
+                <td ng-bind="categoria.Id"></td>
+                <td ng-bind="categoria.Descricao"></td>
+                <td ng-bind="categoria.Slug"></td>
+                <td>
+                    <a href="@Url.Action("Editar","Categorias", new { @area="Admin" },null)?id={{ categoria.Id}}" class="btn btn-primary btn-sm">Editar</a>
+                    <button class="btn btn-danger btn-sm" ng-click="vm.confirmarExclusao(categoria.Id)">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table> 
+
+
+
+</div>

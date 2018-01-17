@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AppTesteDotNet.Areas.Admin.Controllers
+namespace AppTesteDotNet.Areas.Admin.Controllers.Mvc
 {
     public class DashboardController : Controller
     {

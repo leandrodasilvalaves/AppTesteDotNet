@@ -1,13 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AppTesteDotNet.Models.Intefaces;
-using AppTesteDotNet.Testes.Models.Context;
-using AppTesteDotNet.Areas.Admin.Controllers;
-using System.Web.Http.Results;
+﻿using AppTesteDotNet.Areas.Admin.Controllers.Api;
 using AppTesteDotNet.Models.Entities;
+using AppTesteDotNet.Models.Intefaces;
 using AppTesteDotNet.Testes.Mock;
-using System.Linq;
-using System.Net;
+using AppTesteDotNet.Testes.Models.Context;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Web.Http.Results;
 
 namespace AppTesteDotNet.Testes.Admin
 {
@@ -24,7 +21,7 @@ namespace AppTesteDotNet.Testes.Admin
             controller = new CategoriasController(contextTest);
             CategoriaMock.InserirCategoriasNoContextoSeVazio(contextTest);
         }
-        
+
 
         [TestMethod]
         public void GetCategoria_DeveraRetornar_UmaCategoriaPorId()
@@ -55,8 +52,8 @@ namespace AppTesteDotNet.Testes.Admin
         {
             var badResult = controller.PutCategoria(8, CategoriaMock.CategoriaDemo());
             Assert.IsInstanceOfType(badResult, typeof(BadRequestResult));
-        } 
-        
+        }
+
 
         [TestMethod]
         public void DeleteCategoria_DeveraRetornarOk_AposExcluir()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AppTesteDotNet.Models.Entities
 {
@@ -8,6 +9,7 @@ namespace AppTesteDotNet.Models.Entities
         public string Descricao { get; set; }
         public string Slug { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<SubCategoria> SubCategorias { get; set; }
 
         public Categoria()
