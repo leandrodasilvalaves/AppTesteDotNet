@@ -3,7 +3,7 @@
     ViewBag.Title = "Incluir";
 }
 
-<div ng-controller="subCategoriaController as vm" ng-init="vm.IniciarFormularioInclusao()">
+<div ng-controller="subCategoriaController as vm" ng-init="vm.listarCategorias()">
 
     <h2>Incluir SubCategoria</h2>
     <form name="frmIncluir">
@@ -32,36 +32,15 @@
                    ng-model="subcategoria.Slug" ng-required="true">
             <small class="form-text text-muted">Separe as palavras por traços.</small>
         </div>
-        <div>
-            @Html.Partial("../Campos/_FormCampos")
-        </div>
-
-        <br />
-        <button class="btn btn-success btn-lg"
-                ng-click="vm.incluir(subcategoria)"
-                ng-disabled="frmIncluir.$invalid">
-            Salvar
-        </button>
-
-        <a href="@Url.Action("Index","SubCategorias", new { @area="Admin" },null)">Voltar para SubCategorias</a>
+       
     </form>
 
-    <br />
-    <br />
-    <br />
-    @Html.Partial("../Campos/_ListaDeCampos")
+    <button class="btn btn-success btn-lg"
+            ng-click="vm.incluir(subcategoria)"
+            ng-disabled="frmIncluir.$invalid">
+        Salvar
+    </button>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    <a href="@Url.Action("Index","SubCategorias", new { @area="Admin" },null)">Voltar para SubCategorias</a>
+   
 </div>

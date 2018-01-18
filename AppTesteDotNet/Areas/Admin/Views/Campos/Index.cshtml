@@ -3,11 +3,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Subcategorias Admin</h2>
-<div ng-controller="subCategoriaController as vm" ng-init="vm.listarTodos()">
+
+<div ng-controller="campoController as vm" ng-init="vm.inicializarLista()">
+    <h2><small>Campos da Subcategoria: </small><span ng-bind="vm.nomeSubCategoria"></span></h2>
     <div class="row">
         <div class="col-xs-6">
-            <a href="@Url.Action("Incluir","SubCategorias", new { @area="Admin" },null)" class="btn btn-success">Incluir</a>
+            <a href="@Url.Action("Incluir","Campos", new { @area="Admin" },null)?idSubCategoria={{ vm.idSubCategoria }}" class="btn btn-success">Incluir</a>
         </div>
         <div class="col-xs-6 text-right">
             <input type="text" class="form-control" placeholder="Pesquisar da subcategoria" ng-model="pesquisar" />
@@ -18,29 +19,25 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Ordem</th>
                 <th>Descrição</th>
-                <th>Slug</th>
-                <th></th>
+                <th>Tipo</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="subcategoria in vm.listaSubCategorias | filter:pesquisar track by subcategoria.Id ">
-                <td ng-bind="subcategoria.Id"></td>
-                <td ng-bind="subcategoria.Descricao"></td>
-                <td ng-bind="subcategoria.Slug"></td>
-                <td>
-                    <a href="@Url.Action("Index","Campos", new { @area="Admin" },null)?id={{ subcategoria.Id}}" class="btn btn-success btn-sm">Campos >></a>
-                </td>
+            <tr ng-repeat="campo in vm.listaCampos | filter:pesquisar track by campo.Id">
+                <td ng-bind="campo.Id"></td>
+                <td ng-bind="campo.Ordem"></td>
+                <td ng-bind="campo.Descricao"></td>
+                <td ng-bind="campo.Tipo"></td>
                 <td>
                     <a href="@Url.Action("Editar","SubCategorias", new { @area="Admin" },null)?id={{ subcategoria.Id}}" class="btn btn-primary btn-sm">Editar</a>
                     <button class="btn btn-danger btn-sm" ng-click="vm.confirmarExclusao(subcategoria.Id)">Excluir</button>
                 </td>
             </tr>
         </tbody>
-
     </table>
-
 
 
 </div>

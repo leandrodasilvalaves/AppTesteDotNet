@@ -2,7 +2,7 @@
 
     'use strict';
     function categoriaController($scope, categoriaServices) {
-        
+        var _location ="/Admin/Categorias"
         var vm = this;
         vm.listaCategorias = [];
 
@@ -26,16 +26,15 @@
 
         vm.incluir = function (categoria) {
             var response = categoriaServices.incluir(categoria);
-            _executarResponseNonQuery(response);
+            executarResponseNonQuery(response, _location);
         }
 
         vm.editar = function (categoria) {
             var response = categoriaServices.editar(categoria);
-            _executarResponseNonQuery(response);
+            executarResponseNonQuery(response, _location);
         }
 
         vm.confirmarExclusao = function (id) {
-
             swal({
                 title: "Deseja realmente excluir esta categoria ?",
                 text: "ATENÇÃO! Esta operação é irreversível!",
@@ -51,7 +50,6 @@
                         _excluirCategoria(id);
                     }
                 });
-
         };
 
 
@@ -59,17 +57,10 @@
 
         var _excluirCategoria = function(id){
             var response = categoriaServices.excluir(id);
-            _executarResponseNonQuery(response);
+            executarResponseNonQuery(response, _location);
         };
 
-        var _executarResponseNonQuery = function (response) {
-            response.then(function (resp) {
-                location = "/Admin/Categorias";
-            }, function (err) {
-                console.log(err);
-            });
-        };
-
+       
     }
 
     app.controller('categoriaController', ['$scope', 'categoriaServices', categoriaController]);

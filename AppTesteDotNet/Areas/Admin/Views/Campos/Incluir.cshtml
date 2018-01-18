@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Incluir  Campo";
+}
+
+<div ng-controller="campoController as vm" ng-init="vm.listarTiposDeCampos()">
+    <h3>Incluir Campos para subcategoria</h3>
+    <form name="frmIncluirSubCateg">
+        <div class="row">
+            <div class="form-group">
+                <label>Descrição do campo</label>                
+                <input type="text" class="form-control" placeholder="Descrição do campo"
+                       ng-model="campo.Descricao" ng-required="true"/>
+                <small class="form-text text-muted">Descrição do Campo</small>
+            </div>
+            <div class="form-group">
+                <label>Tipo de do campo</label> 
+                <select class="form-control"
+                        ng-model="campo.Tipo"
+                        ng-required="true">
+                    <option disabled>Selecione...</option>
+                    <option value="{{ tpCampo.Num }}"
+                            ng-repeat="tpCampo in vm.listaTipoDeCampos track by tpCampo.Num">
+                        {{ tpCampo.Display }}
+                    </option>
+                </select>
+                <small class="form-text text-muted">Selecione...</small>
+            </div>
+        </div>
+        <div ng-show="campo.Tipo == 1 || campo.Tipo == 2">
+            @Html.Partial("../Lista/_Form")
+        </div>
+    </form>
+    <br />
+    <br />
+    <br />
+    <button class="btn btn-success btn-lg"
+            ng-click="vm.incluir(campo)"
+            ng-disabled="frmIncluir.$invalid">
+        Salvar
+    </button>
+
+    <a href="@Url.Action("Index","Campos", new { @area="Admin" },null)">Voltar para Campos</a>
+</div>

@@ -7,7 +7,7 @@ namespace AppTesteDotNet.Enum
         [Display(Name = "Checkbox")]
         CHECKBOX = 1,
 
-        [Display(Name = "Select > options")]
+        [Display(Name = "Select")]
         SELECT = 2,
 
         [Display(Name = "Text")]

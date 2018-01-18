@@ -1,8 +1,17 @@
-﻿<div class="row">
+﻿<div >
     <div class="col-lg-12">
-        <h5 style="margin-left:0.8em;">Lista de Opções do Campo</h5>
-        <ul>
-            <li><strong>Descrição</strong></li>
+       
+        <strong>Lista de Opções do Campo</strong>
+        
+        <ul class="list-group" style="max-width:50%;">
+            <li class="list-group-item " style="background-color:#b7b7b7;"><strong>Descrição</strong></li>
+            <li class="list-group-item"
+                    ng-repeat="opcao in vm.listaOpcoes track by $index">
+                <span ng-bind="opcao.Descricao"></span> 
+                <span>
+                    <a ng-click="vm.removerOpcao(opcao)">Remover</a>
+                </span>
+        </li>
         </ul>
     </div>
 </div>

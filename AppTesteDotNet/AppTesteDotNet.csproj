@@ -155,10 +155,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\Api\CamposController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\CategoriasController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\SubCategoriasController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\TipoDeCampoController.cs" />
     <Compile Include="Areas\Admin\Controllers\Mvc\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Mvc\CamposController.cs" />
     <Compile Include="Areas\Admin\Controllers\Mvc\CategoriasController.cs" />
     <Compile Include="Areas\Admin\Controllers\Mvc\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\Mvc\SubCategoriasController.cs" />
@@ -194,8 +196,11 @@
   <ItemGroup>
     <Content Include="App_Angular\app.js" />
     <Content Include="App_Angular\common\common.js" />
+    <Content Include="App_Angular\controllers\campo.controller.js" />
     <Content Include="App_Angular\controllers\categoria.controller.js" />
+    <Content Include="App_Angular\services\lista.service.js" />
     <Content Include="App_Angular\controllers\subcategoria.controller.js" />
+    <Content Include="App_Angular\services\campo.service.js" />
     <Content Include="App_Angular\services\categoria.service.js" />
     <Content Include="App_Angular\services\subcategoria.service.js" />
     <Content Include="App_Angular\services\tipoDeCampo.service.js" />
@@ -223,10 +228,11 @@
     <Content Include="Areas\Admin\Views\Categorias\Editar.cshtml" />
     <Content Include="Areas\Admin\Views\SubCategorias\Incluir.cshtml" />
     <Content Include="Areas\Admin\Views\SubCategorias\Editar.cshtml" />
-    <Content Include="Areas\Admin\Views\Campos\_FormCampos.cshtml" />
+    <Content Include="Areas\Admin\Views\Campos\Incluir.cshtml" />
     <Content Include="Areas\Admin\Views\Campos\_ListaDeCampos.cshtml" />
     <Content Include="Areas\Admin\Views\Lista\_Form.cshtml" />
     <Content Include="Areas\Admin\Views\Lista\_Lista.cshtml" />
+    <Content Include="Areas\Admin\Views\Campos\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

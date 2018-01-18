@@ -1,13 +1,15 @@
-﻿<div class="row">
-    <br />
-    <h5 style="margin-left:0.8em;">Incluir Opções Para o Campo</h5>
-    <div class="col-md-10">
-        <small class="form-text text-muted">Descrição da opção</small>
-        <input type="text" class="form-control" placeholder="Descrição da opção" />
-    </div>
-    <div class="col-md-2">
-        <small class="form-text text-muted"></small>
+﻿<div>    
+    <h4 style="margin-left:0.8em;">Incluir Opções Para o Campo</h4>
+    <div class="form-group">
+        <label>Descrição da opção</label>
+        <input type="text" class="form-control" placeholder="Descrição da opção"
+               ng-model="vm.opcao.Descricao" />
+        <small class="form-text text-muted">Descrição da opção</small>   
         <br />
-        <button class="btn btn-info">+</button>
+        <a class="btn btn-info" ng-click="vm.incluirOpcao(vm.opcao.Descricao)"
+                ng-disabled="opcao.Descricao.length === 0">+ Incluir Opção</a>
+        
     </div>
+   
+    <div>@Html.Partial("../Lista/_Lista")</div>
 </div>

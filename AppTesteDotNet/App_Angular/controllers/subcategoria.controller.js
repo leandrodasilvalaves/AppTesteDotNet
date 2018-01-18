@@ -1,12 +1,13 @@
 ﻿(function (app) {
 
     'use strict';
-    function subCategoriaController($scope, subCategoriaServices, categoriaServices, tipoDeCampoServices) {
+    function subCategoriaController($scope, subCategoriaServices, categoriaServices) {
 
+        //variaveis
+        var _location = "/Admin/SubCategorias";
         var vm = this;
         vm.listaSubCategorias = [];
         vm.listaCategorias = [];
-
 
         vm.listarTodos = function () {
             var response = subCategoriaServices.listarTodos();
@@ -24,16 +25,7 @@
             }, function (err) {
                 console.log(err);
             });
-        }
-
-        vm.listarTiposDeCampos = function () {
-            var response = tipoDeCampoServices.listarTodos();
-            response.then(function (resp) {
-                vm.listaTipoDeCampos = resp.data;
-            }, function (err) {
-                console.log(err);
-            });
-        }
+        }       
 
         vm.pesquisarPorId = function () {
             var response = subCategoriaServices.pesquisarPorId(getIdFromUrl());
@@ -46,12 +38,12 @@
 
         vm.incluir = function (subcategoria) {
             var response = subCategoriaServices.incluir(subcategoria);
-            _executarResponseNonQuery(response);
+            executarResponseNonQuery(response, _location);
         }
 
         vm.editar = function (subcategoria) {
             var response = subCategoriaServices.editar(subcategoria);
-            _executarResponseNonQuery(response);
+            executarResponseNonQuery(response, _location);
         }
 
         vm.confirmarExclusao = function (id) {
@@ -72,36 +64,25 @@
                     }
                 });
 
-        };
-
-        vm.IniciarFormularioInclusao = function () {
-            vm.listarCategorias();
-            vm.listarTiposDeCampos();
-        }
+        };       
 
         vm.IniciarFormularioEdicao = function () {            
             vm.pesquisarPorId();
             vm.listarCategorias();
-            vm.listarTiposDeCampos();
         }
+
 
         //Metodos Privados
 
         var _excluirSubCategoria = function (id) {
             var response = subCategoriaServices.excluir(id);
-            _executarResponseNonQuery(response);
+            executarResponseNonQuery(response, _location);
         };
-
-        var _executarResponseNonQuery = function (response) {
-            response.then(function (resp) {
-                location = "/Admin/SubCategorias";
-            }, function (err) {
-                console.log(err);
-            });
-        };
+        
+               
     }
 
     app.controller('subCategoriaController',
-        ['$scope', 'subCategoriaServices', 'categoriaServices', 'tipoDeCampoServices', subCategoriaController]);
+        ['$scope', 'subCategoriaServices', 'categoriaServices', subCategoriaController]);
 
 })(angular.module('appAdmin'));

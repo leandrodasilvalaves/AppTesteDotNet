@@ -9,7 +9,8 @@ namespace AppTesteDotNet.Models.Context
     public class AppContext : DbContext, IAppContext
     {
         public DbSet<Categoria> Categorias { get; set; }
-        public DbSet<SubCategoria> SubCategorias { get; set; }        
+        public DbSet<SubCategoria> SubCategorias { get; set; }
+        public DbSet<Campo> Campos { get; set; }
 
         public AppContext():base("AppTesteConexao")
         {
@@ -18,7 +19,7 @@ namespace AppTesteDotNet.Models.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             modelBuilder.Properties<string>()
@@ -37,5 +38,7 @@ namespace AppTesteDotNet.Models.Context
             modelBuilder.Configurations.Add(new CampoConfiguration());
             modelBuilder.Configurations.Add(new ListaConfiguration());
         }
+
+        
     }
 }
