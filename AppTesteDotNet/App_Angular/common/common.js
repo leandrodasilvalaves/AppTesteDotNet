@@ -16,3 +16,15 @@ var executarResponseNonQuery = function (response, _location) {
         console.log(err);
     });
 };
+
+var gerarSlug = function (texto) {
+    if (texto == undefined || texto == null)
+        return;
+    return texto.replace(/\s\w{1,2}\s/g, '-').replace(/\s/g, '-').toLowerCase();
+}
+
+var autoSlug = function (origem, destino) {
+    var _origem = document.getElementById(origem);
+    var _destino = document.getElementById(destino);
+    _destino.value = gerarSlug(_origem.value);
+}
