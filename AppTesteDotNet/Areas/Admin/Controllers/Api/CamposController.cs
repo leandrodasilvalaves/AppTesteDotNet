@@ -1,5 +1,6 @@
 ﻿using AppTesteDotNet.Models.Context;
 using AppTesteDotNet.Models.Entities;
+using AppTesteDotNet.Models.Intefaces;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -12,7 +13,17 @@ namespace AppTesteDotNet.Areas.Admin.Controllers.Api
 {
     public class CamposController : ApiController
     {
-        private AppContext db = new AppContext();
+        private IAppContext db;
+
+        public CamposController()
+        {
+            db = new AppContext();
+        }
+
+        public CamposController(IAppContext context)
+        {
+            db = context;
+        }
 
         // GET: api/Campos
         public IEnumerable<Campo> GetCampos([FromUri]int subCategoriaId)
@@ -29,7 +40,6 @@ namespace AppTesteDotNet.Areas.Admin.Controllers.Api
             {
                 return NotFound();
             }
-
             return Ok(campo);
         }
 
@@ -56,7 +66,10 @@ namespace AppTesteDotNet.Areas.Admin.Controllers.Api
                 return BadRequest();
             }
 
+            var listaDeOpcoesAnteriores = ListaDeOpcoesAnteriores(id);                
+            ConfigurarNovaListaDeOpcoesParaCampo(campo);
             db.Entry(campo).State = EntityState.Modified;
+            RemoverListaAnteriorDeOpcoesDoCampo(listaDeOpcoesAnteriores);
 
             try
             {
@@ -76,7 +89,7 @@ namespace AppTesteDotNet.Areas.Admin.Controllers.Api
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        
         // POST: api/Campos
         [ResponseType(typeof(Campo))]
         public IHttpActionResult PostCampo(Campo campo)
@@ -120,6 +133,28 @@ namespace AppTesteDotNet.Areas.Admin.Controllers.Api
         private bool CampoExists(int id)
         {
             return db.Campos.Count(e => e.Id == id) > 0;
+        }
+
+        public ICollection<Lista> ListaDeOpcoesAnteriores(int id)
+        {
+            return db.Listas.Where(c => c.CampoId == id).ToList();
+        }
+
+        private void RemoverListaAnteriorDeOpcoesDoCampo(ICollection<Lista> lista)
+        {
+            if (lista.Count > 0)
+            {
+                db.Listas.RemoveRange(lista);
+            }
+        }
+
+        private void ConfigurarNovaListaDeOpcoesParaCampo(Campo campo)
+        {   
+            foreach (var lista in campo.Lista)
+            {
+                lista.CampoId = campo.Id;
+                db.Listas.Add(lista);
+            }
         }
     }
 }

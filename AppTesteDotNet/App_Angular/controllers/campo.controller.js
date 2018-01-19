@@ -7,7 +7,8 @@
         vm.listaCampos = [];
         vm.listaTipoDeCampos = [];
         vm.idSubCategoria = "";
-        vm.ordem = 0;
+        vm.ordem = 0;  
+        vm.tipoDeCampoSelecionado = { Num: 1 };
 
         vm.listarTodosPorSubCategoria = function () {
             vm.idSubCategoria = getIdFromUrl();
@@ -38,7 +39,17 @@
         vm.listaOpcoes = listaServices.listaOpcoes;
         vm.incluirOpcao = listaServices.incluirOpcao;
         vm.removerOpcao = listaServices.removerOpcao;
-
+        
+        vm.pesquisarPorId = function () {
+            var response = campoServices.pesquisarPorId(getIdFromUrl());
+            response.then(function (resp) {
+                vm.campo = resp.data;
+                vm.tipoDeCampoSelecionado.Num = vm.campo.Tipo;
+                _carregarListaOpcoesComDadosDoServidor(vm.campo.Lista);
+            }, function (err) {
+                console.log(err);
+            });
+        }
         vm.incluir = function (campo) {
             
             _obterOrdemParaNovoCampo();
@@ -49,9 +60,25 @@
                 campo.ordem = vm.ordem;
                 var response = campoServices.incluir(campo);
                 executarResponseNonQuery(response, _location);
-
             }, 2000);
         };
+
+        vm.editar = function (campo) {
+            campo.Lista = vm.listaOpcoes;
+            campo.Tipo = vm.tipoDeCampoSelecionado.Num;
+            var response = campoServices.editar(campo);
+            executarResponseNonQuery(response, '/Admin/Campos?id=' + campo.SubCategoriaId);
+        };
+
+        vm.mudarTipoDeCampo = function () {
+            vm.listaOpcoes.splice(0, vm.listaOpcoes.length);
+        }
+
+        vm.inicializarFormularioEdicao = function () {
+            vm.listarTiposDeCampos();
+            vm.pesquisarPorId();
+        }
+
 
         //metodos privados
         var _getNomeTipoDeCampo = function (campo) {
@@ -85,6 +112,11 @@
             });
         }
 
+        var _carregarListaOpcoesComDadosDoServidor = function (lista) {
+            lista.forEach(function (e) {
+                vm.listaOpcoes.push({ Descricao: e.Descricao });
+            });
+        }
        
     }
 

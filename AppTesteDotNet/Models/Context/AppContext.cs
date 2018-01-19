@@ -11,6 +11,7 @@ namespace AppTesteDotNet.Models.Context
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<SubCategoria> SubCategorias { get; set; }
         public DbSet<Campo> Campos { get; set; }
+        public DbSet<Lista> Listas { get; set; }
 
         public AppContext():base("AppTesteConexao")
         {
@@ -19,7 +20,6 @@ namespace AppTesteDotNet.Models.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             modelBuilder.Properties<string>()

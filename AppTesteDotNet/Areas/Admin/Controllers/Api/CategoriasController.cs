@@ -1,14 +1,12 @@
 ﻿using AppTesteDotNet.Models.Context;
 using AppTesteDotNet.Models.Entities;
 using AppTesteDotNet.Models.Intefaces;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Web.Mvc;
 
 namespace AppTesteDotNet.Areas.Admin.Controllers.Api
 {

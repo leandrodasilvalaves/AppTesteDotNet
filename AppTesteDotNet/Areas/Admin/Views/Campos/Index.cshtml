@@ -32,7 +32,7 @@
                 <td ng-bind="campo.Descricao"></td>
                 <td ng-bind="campo.Tipo"></td>
                 <td>
-                    <a href="@Url.Action("Editar","SubCategorias", new { @area="Admin" },null)?id={{ subcategoria.Id}}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="@Url.Action("Editar","Campos", new { @area="Admin" },null)?id={{ campo.Id}}" class="btn btn-primary btn-sm">Editar</a>
                     <button class="btn btn-danger btn-sm" ng-click="vm.confirmarExclusao(subcategoria.Id)">Excluir</button>
                 </td>
             </tr>

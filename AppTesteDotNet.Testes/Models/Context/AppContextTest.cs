@@ -10,6 +10,8 @@ namespace AppTesteDotNet.Testes.Models.Context
     {
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<SubCategoria> SubCategorias { get; set; }
+        public DbSet<Campo> Campos { get; set; }
+        public DbSet<Lista> Listas { get; set; }
 
         public AppContextTest()
         {

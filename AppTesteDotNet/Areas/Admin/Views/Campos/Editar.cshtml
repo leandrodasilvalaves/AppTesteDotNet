@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<div ng-controller="campoController as vm" ng-init="vm.inicializarFormularioEdicao()">
+
+    <h3>Editar Campos para subcategoria</h3>
+    <form name="frmEditar">
+        <div class="row">
+            <div class="form-group">
+                <label>Descrição do campo</label>
+                <input type="text" class="form-control" placeholder="Descrição do campo"
+                       ng-model="vm.campo.Descricao" ng-required="true" />
+                <small class="form-text text-muted">Descrição do Campo</small>
+            </div>
+            <div class="form-group">
+                <label>Tipo de do campo</label>               
+                <select class="form-control"
+                        ng-required="true"
+                        ng-model="vm.tipoDeCampoSelecionado"
+                        ng-change="vm.mudarTipoDeCampo()"
+                        ng-options="tpCampo as tpCampo.Display for tpCampo in vm.listaTipoDeCampos track by tpCampo.Num">
+                </select>                
+                <small class="form-text text-muted">Selecione...</small>
+            </div>
+        </div>
+        <div ng-show="vm.tipoDeCampoSelecionado.Num == 1 || vm.tipoDeCampoSelecionado.Num == 2">
+            @Html.Partial("../Lista/_Form")
+        </div>
+    </form>
+    <br />
+    <br />
+    <br />
+    <button class="btn btn-success btn-lg"
+            ng-click="vm.editar(vm.campo)"
+            ng-disabled="frmEditar.$invalid">
+        Salvar
+    </button>
+
+    <a href="@Url.Action("Index","Campos", new { @area="Admin" },null)?id={{ vm.campo.SubCategoriaId }}">Voltar para Campos</a>
+</div>
