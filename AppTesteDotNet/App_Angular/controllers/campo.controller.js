@@ -70,6 +70,24 @@
             executarResponseNonQuery(response, '/Admin/Campos?id=' + campo.SubCategoriaId);
         };
 
+        vm.confirmarExclusao = function (id) {
+            swal({
+                title: "Deseja realmente excluir este campo ?",
+                text: "ATENÇÃO! Esta operação é irreversível!",
+                icon: "error",
+                buttons: {
+                    cancel: "Cancelar",
+                    confirm: "Excluir"
+                },
+                dangerMode: true,
+            })
+                .then(function (willDelete) {
+                    if (willDelete) {
+                        _excluirCampo(id);
+                    }
+                });
+        }
+
         vm.mudarTipoDeCampo = function () {
             vm.listaOpcoes.splice(0, vm.listaOpcoes.length);
         }
@@ -81,6 +99,11 @@
 
 
         //metodos privados
+        var _excluirCampo = function (id) {
+            var response = campoServices.excluir(id);
+            executarResponseNonQuery(response, _location);
+        };
+
         var _getNomeTipoDeCampo = function (campo) {
             var _tipoNome = vm.listaTipoDeCampos.find(function (tp) {
                 return tp.Num == campo.Tipo;
