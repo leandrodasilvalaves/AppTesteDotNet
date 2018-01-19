@@ -196,8 +196,10 @@
   <ItemGroup>
     <Content Include="App_Angular\app.js" />
     <Content Include="App_Angular\common\common.js" />
+    <Content Include="App_Angular\config\app.config.js" />
     <Content Include="App_Angular\controllers\campo.controller.js" />
     <Content Include="App_Angular\controllers\categoria.controller.js" />
+    <Content Include="App_Angular\interceptors\loading.interceptor.js" />
     <Content Include="App_Angular\services\lista.service.js" />
     <Content Include="App_Angular\controllers\subcategoria.controller.js" />
     <Content Include="App_Angular\services\campo.service.js" />

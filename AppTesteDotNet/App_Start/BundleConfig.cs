@@ -33,6 +33,8 @@ namespace AppTesteDotNet
 
                         "~/App_Angular/common/*.js",
                         "~/App_Angular/app.js",
+                        "~/App_Angular/config/*.js",
+                        "~/App_Angular/interceptors/*.js",
                         "~/App_Angular/services/*.js",
                         "~/App_Angular/controllers/*.js"
                 ));

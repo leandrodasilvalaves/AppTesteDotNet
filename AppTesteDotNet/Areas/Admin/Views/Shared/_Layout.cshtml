@@ -29,7 +29,12 @@
     </div>
 
     <div class="container body-content">
-        @RenderBody()
+        <div class="alert alert-info" style="margin-top:6em;" ng-show="loading">
+            <h4>Carregando os dados, aguarde...</h4>
+        </div>
+        <div ng-show="!loading">
+            @RenderBody()
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
