@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Forms";
+}
+
+<div ng-controller="formularioController as vm" ng-init="vm.iniciaizarTelaDeForms()">
+
+    <div class="page-header">
+        <h1>
+            <small>Categoria: </small><span ng-bind="vm.categoriaFormulario.Descricao"></span>
+            <br /><small>Slug: </small><small class="text-info" ng-bind="vm.categoriaFormulario.Slug"></small>
+        </h1>
+        <h2><small>SubCategoria: </small><span ng-bind="vm.subCategoria.Descricao"></span>
+        <br /><small>Slug:<span class="text-info" ng-bind="vm.subCategoria.Slug"></span></small></h2>
+    </div>
+    <hr />
+
+    <div id="contentForms"></div>
+    <button class="btn btn-success" ng-click="vm.criarFormulario();">Adicionar outro Formulário</button>
+</div>
+

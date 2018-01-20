@@ -10,7 +10,6 @@ var getIdFromUrl = function () {
 
 var executarResponseNonQuery = function (response, _location) {
     response.then(function (resp) {
-        console.log(resp);
         location = _location;
     }, function (err) {
         console.log(err);
@@ -27,4 +26,27 @@ var autoSlug = function (origem, destino) {
     var _origem = document.getElementById(origem);
     var _destino = document.getElementById(destino);
     _destino.value = gerarSlug(_origem.value);
+}
+
+var criarFormNaDom = function (data) {
+    var template = `
+        <div class="container my-form">
+            <form>
+              ` + prepararTemplate(data) + `
+            </form>
+        </div>`;
+    $("#contentForms").append(template);
+
+}
+
+var prepararTemplate = function (data) {
+    var template = "";
+    data.forEach(function (e) {
+        template += `
+            <div class="form-group">
+                <label>` + e.Descricao + `</label>`
+                + e.HTML +
+            `</div>`;
+    });
+    return template;
 }

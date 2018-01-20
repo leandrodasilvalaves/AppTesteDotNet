@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div ng-controller="formularioController as vm" ng-init="vm.listarFormularios()">
+    <h2>Categorias dos formulários</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Descrição</th>
+                <th>Slug</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="categoriaForm in vm.listaCategoriasForms track by categoriaForm.Id">
+                <td ng-bind="categoriaForm.Id"></td>
+                <td ng-bind="categoriaForm.Descricao"></td>
+                <td ng-bind="categoriaForm.Slug"></td>
+                <td><a href="@Url.Action("SubCategoriasForms", "Formularios", new { @area="" },null)?id={{ categoriaForm.Id}}" class="btn btn-success">Sub-categorias >></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

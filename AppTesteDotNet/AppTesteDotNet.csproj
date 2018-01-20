@@ -168,7 +168,8 @@
     <Compile Include="Areas\Admin\Models\Enum\EnumObj.cs" />
     <Compile Include="Areas\Admin\Models\Enum\EnumViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Enum\TipoDeCampoViewModel.cs" />
-    <Compile Include="Controllers\CategoriasController.cs" />
+    <Compile Include="Controllers\Api\FormulariosController.cs" />
+    <Compile Include="Controllers\FormulariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Enum\HtmlCampo.cs" />
@@ -199,7 +200,9 @@
     <Content Include="App_Angular\config\app.config.js" />
     <Content Include="App_Angular\controllers\campo.controller.js" />
     <Content Include="App_Angular\controllers\categoria.controller.js" />
+    <Content Include="App_Angular\controllers\formulario.controller.js" />
     <Content Include="App_Angular\interceptors\loading.interceptor.js" />
+    <Content Include="App_Angular\services\formulario.services.js" />
     <Content Include="App_Angular\services\lista.service.js" />
     <Content Include="App_Angular\controllers\subcategoria.controller.js" />
     <Content Include="App_Angular\services\campo.service.js" />
@@ -256,6 +259,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Formularios\CategoriasForms.cshtml" />
+    <Content Include="Views\Formularios\SubCategoriasForms.cshtml" />
+    <Content Include="Views\Formularios\Forms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,6 @@
 ﻿using AppTesteDotNet.TipoDeCampos;
 using System.Collections.Generic;
-using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppTesteDotNet.Models.Entities
 {
@@ -14,6 +14,9 @@ namespace AppTesteDotNet.Models.Entities
         public int SubCategoriaId { get; set; }
         public virtual SubCategoria SubCategoria { get; set; }
 
+        [NotMapped]
+        public string HTML { get; set; }
+
         public virtual ICollection<Lista> Lista { get; set; }
         
         public Campo()
@@ -23,7 +26,8 @@ namespace AppTesteDotNet.Models.Entities
 
         public string Renderizar(ITipoDeCampo tipoDeCampo)
         {
-            return tipoDeCampo.Renderizar();
+            HTML = tipoDeCampo.Renderizar();
+            return HTML;
         }
         
     }

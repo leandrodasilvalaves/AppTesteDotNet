@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<body>
+<body ng-app="appAdmin">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,13 +22,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Categorias dos Formulários", "CategoriasForms", "Formularios", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Admin", "Index", "Dashboard", new { area = "Admin" }, null)</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <div class="alert alert-info" style="margin-top:6em;" ng-show="loading">
+            <h4>Carregando os dados, aguarde...</h4>
+        </div>
+        <div ng-show="!loading">
+            @RenderBody()
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
@@ -37,6 +43,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/angular/app")
     @RenderSection("scripts", required: false)
 </body>
 </html>

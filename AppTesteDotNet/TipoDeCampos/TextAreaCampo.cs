@@ -13,7 +13,7 @@
 
         public string Renderizar()
         {
-            return "<textarea rows='" + _rows +"' cols=''></textarea>";
+            return "<textarea class='form-control' rows='" + _rows +"' cols=''></textarea>";
         }
     }
 }

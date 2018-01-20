@@ -4,7 +4,7 @@
     {
         public string Renderizar()
         {
-            return "<input type='text' name='' value=''>";
+            return "<input type='text' class='form-control' name='' value=''>";
         }
     }
 }

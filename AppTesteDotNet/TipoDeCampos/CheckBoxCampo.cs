@@ -4,16 +4,28 @@ namespace AppTesteDotNet.TipoDeCampos
 {
     public class CheckBoxCampo : ITipoDeCampo
     {
-        private string _label;
+        private string[] _labels;
 
-        public CheckBoxCampo(string label)
+        public CheckBoxCampo(string []labels)
         {
-            _label = label;
+            _labels = labels;
         }
 
         public string Renderizar()
         {
-            return "<input type='checkbox' name='' value=''> " + _label;
+            return "<ul class='list-group' style='max-width:50 %;'>" +
+                       PreencherLista() + 
+                   "</ul>";
+        }
+
+        private string PreencherLista()
+        {
+            string lista = "";
+            foreach(string label in _labels)
+            {
+                lista += "<li class='list-group-item'><input type = 'checkbox' value=''> - " + label + "</li>";
+            }
+            return lista;
         }
     }
 }

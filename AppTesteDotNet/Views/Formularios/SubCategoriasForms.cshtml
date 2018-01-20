@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<div ng-controller="formularioController as vm" ng-init="vm.inicializarSubCategoriasForms()">
+
+    <div class="page-header">
+        <h1><small>Categoria: </small><span ng-bind="vm.categoriaFormulario.Descricao"></span> 
+        <br /><small>Slug: </small><small ng-bind="vm.categoriaFormulario.Slug"></small></h1>
+    </div>
+    <hr />
+    <h3>Sub Categorias</h3>
+    <br />
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Descrição</th>
+            <th>Slug</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="subcategoria in vm.listaSubCategorias track by subcategoria.Id">
+            <td ng-bind="subcategoria.Id"></td>
+            <td ng-bind="subcategoria.Descricao"></td>
+            <td ng-bind="subcategoria.Slug"></td>
+            <td><a href="@Url.Action("Forms", "Formularios", new { @area="" },null)?id={{ subcategoria.Id }}" class="btn btn-success">Formulários >></a></td>
+        </tr>
+    </tbody>
+    </table>
+
+
+</div>
+

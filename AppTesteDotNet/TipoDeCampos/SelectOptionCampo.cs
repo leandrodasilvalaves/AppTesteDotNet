@@ -11,15 +11,17 @@
 
         public string Renderizar()
         {
-            return "<select>" + RenderizarOptions() + "</select>";
+            return "<select class='form-control'>" + RenderizarOptions() + "</select>";
         }
 
         private string RenderizarOptions()
         {
             string options = "";
+            var i = 1;
             foreach(var opt in _options)
             {
-                options += "<option value=''>" + opt + "</option>";
+                options += "<option value='"+ i +"'>" + opt + "</option>";
+                i++;
             }
             return options;
         }

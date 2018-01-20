@@ -16,3 +16,11 @@ textarea {
     max-width: 280px;
 }
 
+.my-form {
+    padding: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #edf0fdab;
+    border: 1px solid #b1afaf;
+    max-width:500px;
+}
